@@ -1,0 +1,24 @@
+test@biddify.com  123456
+kamau@test.com    123456
+
+
+Test User Authentication:
+
+    Use Postman to test /api/auth/register and /api/auth/login.    
+
+Add Auction Item Logic:
+
+    Create an AuctionItem model.
+
+    Add routes for creating, fetching, and deleting auctions.              done
+
+Build WebSocket for Real-Time Bidding:
+
+    Use Socket.IO to broadcast updates.
+
+
+Create a frontend dashboard to display auction items and handle bidding.
+
+Implement authentication middleware to secure endpoints.
+
+Extend WebSocket logic to notify users of auction status changes (e.g., "Auction Closed").
