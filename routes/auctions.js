@@ -53,10 +53,12 @@ router.post("/create", upload.array("images", 5), async (req, res) => {
   }
 });
 
-// Fetch all auction items
+// Fetch all auction items or filter by category
 router.get("/", async (req, res) => {
   try {
-    const auctionItems = await AuctionItem.find().sort({ auctionEndTime: 1 });
+    const { category } = req.query;
+    const query = category ? { category } : {};
+    const auctionItems = await AuctionItem.find(query).sort({ auctionEndTime: 1 });
     res.status(200).json(auctionItems);
   } catch (error) {
     res.status(500).json({ error: error.message });

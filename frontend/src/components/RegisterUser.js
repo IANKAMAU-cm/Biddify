@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/styles.css";
 
-const Register = () => {
+const RegisterUser = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    role: "user", // Default role is 'user'
   });
 
   const handleChange = (e) => {
@@ -16,29 +16,24 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", formData); // Backend registration endpoint
-      alert("Registration successful!");
+      await axios.post("http://localhost:5000/api/auth/register/user", formData);
+      alert("User registration successful!");
     } catch (error) {
-      console.error("Registration failed:", error);
+      console.error("User registration failed:", error);
     }
   };
 
   return (
-    <div className="register">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="auth-page">
+      <h2 className="auth-title">User Registration</h2>
+      <form className="auth-form" onSubmit={handleSubmit}>
         <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
         <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-        <select name="role" onChange={handleChange}>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-        <button type="submit">Register</button>
+        <button type="submit" className="btn btn-primary">Register</button>
       </form>
     </div>
   );
 };
 
-export default Register;
-// This code defines a simple registration form using React.
+export default RegisterUser;

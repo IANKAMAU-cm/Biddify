@@ -22,3 +22,14 @@ Create a frontend dashboard to display auction items and handle bidding.
 Implement authentication middleware to secure endpoints.
 
 Extend WebSocket logic to notify users of auction status changes (e.g., "Auction Closed").
+
+
+
+<div className="admin-buttons">
+          <h3>Admin</h3>
+          <Link to="/login/admin" className="btn btn-secondary">Login as Admin</Link>
+          <Link to="/register/admin" className="btn btn-primary">Register as Admin</Link>
+        </div>
+
+To do
+Separate User registration from admin registration. Similarly to user login

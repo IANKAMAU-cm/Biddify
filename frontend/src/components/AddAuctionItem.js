@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/styles.css"; // Import the CSS file
 
 const AddAuctionItem = () => {
   const [formData, setFormData] = useState({
@@ -8,13 +9,13 @@ const AddAuctionItem = () => {
     startingPrice: "",
     auctionEndTime: "",
     category: "electronics",
-    serialNumber: "N/A",
-    model: "N/A",
-    yearOfManufacture: "N/A",
-    color: "N/A",
-    primaryDamage: "N/A",
-    secondaryDamage: "N/A",
-    VIN: "N/A",
+    serialNumber: "Not Applicable",
+    model: "Not Applicable",
+    yearOfManufacture: "Not Applicable",
+    color: "Not Applicable",
+    primaryDamage: "Not Applicable",
+    secondaryDamage: "Not Applicable",
+    VIN: "Not Applicable",
     odometer: 0,
     working: true,
     images: [],
@@ -40,7 +41,7 @@ const AddAuctionItem = () => {
       }
     }
     try {
-      await axios.post("/api/auctions/create", data);
+      await axios.post("http://localhost:5000/api/auctions/create", data);
       alert("Auction item added successfully!");
     } catch (error) {
       console.error("Failed to add auction item:", error);
@@ -63,6 +64,18 @@ const AddAuctionItem = () => {
           <option value="machinery">Machinery</option>
           <option value="featured">Featured</option>
         </select>
+        <input type="text" name="serialNumber" placeholder="Serial Number" onChange={handleChange} />
+        <input type="text" name="model" placeholder="Model" onChange={handleChange} />
+        <input type="text" name="yearOfManufacture" placeholder="Year of Manufacture" onChange={handleChange} />
+        <input type="text" name="color" placeholder="Color" onChange={handleChange} />
+        <input type="text" name="primaryDamage" placeholder="Primary Damage" onChange={handleChange} />
+        <input type="text" name="secondaryDamage" placeholder="Secondary Damage" onChange={handleChange} />
+        <input type="text" name="VIN" placeholder="VIN" onChange={handleChange} />
+        <input type="number" name="odometer" placeholder="Odometer" onChange={handleChange} />
+        <select name="working" onChange={handleChange}>
+          <option value={true}>Working</option>
+          <option value={false}>Not Working</option>
+        </select>
         <input type="file" name="images" multiple onChange={handleFileChange} />
         <button type="submit">Add Item</button>
       </form>
@@ -71,4 +84,3 @@ const AddAuctionItem = () => {
 };
 
 export default AddAuctionItem;
-// This code defines a form for adding auction items, including file uploads and various fields.
